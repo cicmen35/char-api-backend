@@ -28,11 +28,15 @@ RUN --mount=type=bind,source=package.json,target=package.json \
 # Run the application as a non-root user.
 USER node
 
+RUN npm install
+
 # Copy the rest of the source files into the image.
 COPY . .
+
+RUN npx prisma generate
 
 # Expose the port that the application listens on.
 EXPOSE 3000
 
 # Run the application.
-CMD node index.js
+CMD ["npm", "run", "dev"]
