@@ -1,4 +1,4 @@
-const characterService = require('../services/character.service.js');
+import { characterService } from '../services/character.service.js';
 
 class CharacterController {
     async getData(req, res) {
@@ -24,4 +24,4 @@ class CharacterController {
     }
 }
 
-module.exports = new CharacterController();
+export const characterController = new CharacterController();

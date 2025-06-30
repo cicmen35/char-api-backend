@@ -1,8 +1,8 @@
-const express = require('express');
+import express from 'express';
+import { characterRoutes } from './routes/character.routes.js';
 const app = express();
 let port = 3000;
 
-const characterRoutes = require('./routes/character.routes.js');
 app.use('/api', characterRoutes);
 
 app.use(express.json());
