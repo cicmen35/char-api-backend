@@ -1,5 +1,5 @@
 import express from 'express';
-import { characterRoutes } from './routes/character.routes';
+import { characterRoutes } from './routes/character.routes.js';
 
 const server = {
   app: express(),
