@@ -8,8 +8,12 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "description": "",
+  "description": "REST API with node, express, and postgresql",
   "dependencies": {
-    "express": "^5.1.0"
+    "dotenv": "^17.0.0",
+    "express": "^5.1.0",
+    "pg": "^8.16.3",
+    "pg-pool": "^3.10.1",
+    "pg-promise": "^11.14.0"
   }
 }
