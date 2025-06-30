@@ -1,22 +1,26 @@
 import express from 'express';
-import { characterRoutes } from './routes/character.routes.js';
-const app = express();
-let port = 3000;
+import { characterRoutes } from './routes/character.routes';
 
-app.use('/api', characterRoutes);
+const server = {
+  app: express(),
+  port: 3000,
 
-app.use(express.json());
-app.use(
-    express.urlencoded({
-        extended: true,
-    })
-);
+  init() {
+    this.app.use(express.json());
+    this.app.use('/api', characterRoutes);
+    this.app.get('/', (req, res) => {
+      res.json({ message: 'koala rest api' });
+    });
+  },
 
-app.get('/', (req, res) => {
-    res.json({ info: 'Node.js, Express, and Postgres API'})
-});
+  start() {
+    this.app.listen(this.port, () => {
+      console.log(`Server running on port ${this.port}`);
+      console.log(`Read all data at http://localhost:${this.port}/api/data`);
+    });
+  }
+};
 
-app.listen(port, () => {
-    console.log(`App running on port http://localhost:${port}`)
-    console.log(`Read all data at http://localhost:${port}/api/data`)
-});
+server.init();
+server.start();
+
