@@ -1,14 +1,13 @@
 const express = require('express');
-const bodyParser = require('body-parser');
 const app = express();
 let port = 3000;
 
-const characterRoutes = require('./routes/character.routes');
+const characterRoutes = require('./routes/character.routes.js');
 app.use('/api', characterRoutes);
 
-app.use(bodyParser.json());
+app.use(express.json());
 app.use(
-    bodyParser.urlencoded({
+    express.urlencoded({
         extended: true,
     })
 );
