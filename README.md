@@ -14,22 +14,42 @@ REST API connected to a database providing endpoint to read all character data a
 ### Setup
 1. Clone the repo
 
-2. Install dependencies
+2. **Configure environment**
+    - Create a `.env` file in the **project root**
+      ```
+      DATABASE_URL=your_postgres_string
+      ```
+
+3. **Build the image**
+    ```
+    docker build -t your-image-name .
+    ```
+
+4. **Run the container**
+    ```
+    docker run --env-file .env -p 3000:3000 your-image-name
+    ```
+    - app will be available at [http://localhost:3000/api/data](http://localhost:3000/api/data)
+
+5. **Or using docker compose**
+    ```
+    docker compose up --build
+    ```
+
+---
+
+### Run without Docker
+1. Install dependencies
     ```
     npm install
     ```
-3. Configure environment
-- create .env file in the project root (.env file is created automatically when initialising Prisma):
-    ```
-    DATABASE_URL=your_postgres_string
-    ```
-4. Set up Prisma
+2. Set up Prisma
     ```
     npx prisma generate
-    ```    
-5. Run the server
     ```
-    node index.js
+3. Run the server
+    ```
+    npm run dev
     ```
     - GET '/' returns the initial info
     - GET '/api/data' returns the required json response
