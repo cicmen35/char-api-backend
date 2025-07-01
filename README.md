@@ -10,6 +10,7 @@ REST API connected to a database providing endpoint to read all character data a
 - express
 - prisma ORM
 - postgreSQL
+- docker
 
 ### Setup
 1. Clone the repo
